@@ -1,0 +1,390 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.card {
+    width: 100%;
+    max-width: 600px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    margin: 0 0 4px;
+    text-align: center;
+    color: #333;
+}
+
+.subtitle {
+    margin: 0 0 24px;
+    text-align: center;
+    color: #777;
+}
+
+/* ---------- Tabs ---------- */
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #eee;
+}
+
+.tab-btn {
+    flex: 1 0 auto;
+    white-space: nowrap;
+    padding: 12px 6px;
+    font-size: 0.9rem;
+    margin-bottom: -2px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    background: none;
+    font-family: inherit;
+    font-weight: 600;
+    color: #777;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.tab-btn:hover {
+    color: #764ba2;
+}
+
+.tab-btn.active {
+    color: #764ba2;
+    border-bottom-color: #764ba2;
+}
+
+/* ---------- Shared form controls ---------- */
+
+label,
+.section-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font: inherit;
+    resize: vertical;
+}
+
+textarea:focus,
+.text-field:focus,
+select:focus {
+    outline: none;
+    border-color: #764ba2;
+}
+
+.field {
+    margin-bottom: 20px;
+}
+
+.text-field,
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font: inherit;
+    background: #fff;
+}
+
+.buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.record-controls,
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font: inherit;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+}
+
+.btn:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.buttons .btn,
+.record-controls .btn,
+.actions .btn {
+    flex: 1;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.btn-secondary {
+    background: #95a5a6;
+}
+
+.btn-danger {
+    background: #e74c3c;
+}
+
+.btn-download {
+    background: #007bff;
+    margin-top: 12px;
+}
+
+.btn-small {
+    flex: none;
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+/* ---------- Status ---------- */
+
+.status {
+    margin: 16px 0;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.status.success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status.error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.status.info {
+    background: #e8eaf6;
+    color: #3f51b5;
+}
+
+/* ---------- Text to Speech ---------- */
+
+.audio-panel {
+    margin-top: 24px;
+    padding: 16px;
+    background: #f7f7fb;
+    border-radius: 8px;
+}
+
+.audio-panel h2 {
+    margin: 0 0 12px;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+.audio-panel audio {
+    width: 100%;
+}
+
+/* ---------- Speech to Text ---------- */
+
+.recording-indicator {
+    color: #e74c3c;
+    font-weight: 600;
+    margin-bottom: 15px;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    50% { opacity: 0.4; }
+}
+
+.playback {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.file-input {
+    margin-bottom: 20px;
+}
+
+.file-input input {
+    width: 100%;
+    padding: 10px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.result {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.result h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.result p {
+    color: #333;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    margin-bottom: 15px;
+}
+
+/* ---------- Diarization ---------- */
+
+.segments {
+    list-style: none;
+}
+
+.segment {
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-left: 4px solid #ccc;
+    background: #fff;
+    border-radius: 4px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.speaker {
+    font-weight: 700;
+}
+
+/* ---------- Pronunciation ---------- */
+
+.good { color: #27ae60; }
+.fair { color: #e67e22; }
+.poor { color: #e74c3c; }
+
+.scores {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 4px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.score-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.score-label {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.words {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.word {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4px 8px;
+    border: 2px solid currentColor;
+    border-radius: 6px;
+    background: #fff;
+    font-weight: 600;
+}
+
+.word-omission .word-text {
+    text-decoration: line-through;
+}
+
+.word-insertion {
+    border-style: dashed;
+}
+
+.word-error {
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.legend {
+    font-size: 0.85rem;
+}
+
+.legend-item {
+    margin-right: 12px;
+    font-weight: 600;
+}
+
+.legend-item::before {
+    content: "■ ";
+}
+
+/* ---------- Visibility ---------- */
+
+[hidden] {
+    display: none !important;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 25px;
+    }
+
+    .record-controls,
+    .actions {
+        flex-direction: column;
+    }
+
+    .scores {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

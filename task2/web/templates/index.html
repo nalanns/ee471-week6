@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cat Kind Classifier</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main>
+    <h1>Cat Kind Classifier</h1>
+    <input type="file" id="image-input" accept="image/*">
+    <img id="preview" alt="Selected image" hidden>
+    <button id="classify-btn" disabled>Classify</button>
+    <p id="status"></p>
+    <ul id="results"></ul>
+  </main>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

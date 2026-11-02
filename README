@@ -1,0 +1,56 @@
+# EE 471 – Week 6: Docker & Cog
+
+## Requirements
+- Docker Desktop
+- Cog (`brew install replicate/tap/cog`)
+- An Azure Speech resource (for Task 1)
+
+## Task 1 – Containerized speech studio & voice calculator
+
+Create `task1/.env`:
+```
+SPEECH_KEY=your-key
+SPEECH_REGION=westeurope
+```
+
+Speech studio:
+```bash
+cd task1/speech-studio
+docker build -t speech-studio .
+docker run --rm --name speech-studio -p 5001:5001 --env-file ../.env speech-studio
+```
+Open http://localhost:5001
+
+Voice calculator:
+```bash
+cd task1/voice-calculator
+docker build -t voice-calculator .
+docker run --rm --name voice-calculator -p 5002:5001 --env-file ../.env voice-calculator
+```
+Open http://localhost:5002
+
+## Task 2 – Cat-kind classifier (Cog + Flask)
+
+Build the model image with Cog, then start the model and the website:
+```bash
+cd task2/cat-model
+cog build -t cat-model
+cd ..
+docker compose up --build
+```
+Open http://localhost:8000, upload a cat image and click **Classify**.
+
+Live prediction logs from inside the model container:
+```bash
+docker exec -it cat-model tail -f /tmp/predictions.log
+```
+
+Direct API call to the Cog container (JSON only; images as base64 data URI):
+```bash
+curl http://localhost:5050/predictions -X POST \
+  -H 'Content-Type: application/json' \
+  -d "{\"input\": {\"image\": \"data:image/jpeg;base64,$(base64 -i cat.jpg)\"}}"
+```
+
+## Docker intro
+`getting-started-todo-app/` is the sample project from Docker's "Introduction" tutorial.

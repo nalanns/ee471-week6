@@ -1,0 +1,16 @@
+services:
+  model:
+    image: cat-model
+    container_name: cat-model
+    platform: linux/amd64
+    ports:
+      - "5050:5000"
+  web:
+    build: ./web
+    container_name: cat-web
+    ports:
+      - "8000:8000"
+    environment:
+      MODEL_URL: http://model:5000
+    depends_on:
+      - model
